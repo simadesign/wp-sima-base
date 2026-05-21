@@ -1,0 +1,21 @@
+{
+    "name": "simadesign/sima-base",
+    "description": "A WordPress base plugin for SiMa projects, providing utilities for custom theme development and essential security features.",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "Neil",
+            "email": "n.weyer@simadesign.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SimaBase\\" : "src/"
+        }
+    },
+    "require": {
+        "fightbulc/moment": "^1.35",
+        "guzzlehttp/guzzle": "^7.10",
+        "twbs/bootstrap": "^5.3"
+    }
+}

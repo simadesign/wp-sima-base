@@ -1,0 +1,17 @@
+{
+  "name" : "SiMa Base",
+  "slug" : "sima-base",
+  "author" : "<a href='https://simadesign.de'>SiMaDesign</a>",
+  "author_profile" : "#",
+  "version" : "0.1.0",
+  "download_url" : "https://raw.githubusercontent.com/simadesign/wp-sima-base/main/plugin.json",
+  "requires" : "6.0",
+  "tested" : "7.0",
+  "requires_php" : "7.0",
+  "last_updated" : "20226-05-21 00:00:00",
+  "sections" : {
+    "description" : "A WordPress base plugin for SiMa projects, providing utilities for custom theme development and essential security features.",
+    "installation" : "Click the activate button and that's it.",
+    "changelog" : "/"
+  }
+}
