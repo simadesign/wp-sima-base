@@ -1,9 +1,13 @@
 <?php
 namespace SimaBase;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 use SimaBase\Admin\AdminController;
 use SimaBase\Core\Traits\Singleton;
-use SimaTheme\Core\Updater;
+use SimaBase\Core\Updater;
 
 class Plugin
 {
@@ -22,23 +26,26 @@ class Plugin
     public string $slug = 'sima-base';
 
     public string $pluginFile;
-    public ?array $pluginData = null;
-    public ?string $version = null;
-
     public string $pluginDirUrl;
 
     public function __construct(){
+        $this->pluginFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'sb.php');
         $this->pluginDirUrl = plugin_dir_url(__DIR__);
-        $this->pluginFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'st.php');
         $this->basename = plugin_basename($this->pluginFile);
-
-        $this->onAdminLoad(function() {
-            $this->pluginData = get_plugin_data($this->pluginFile);
-            $this->version = $this->pluginData['Version'];
-        });
 
         $this->adminController = new AdminController();
         $this->updater = new Updater($this);
+    }
+
+    public function getData(){
+        if(empty($this->pluginData)){
+            $this->pluginData = get_plugin_data($this->pluginFile);
+        }
+        return $this->pluginData;
+    }
+
+    public function getVersion(){
+        return $this->getData()['Version'];
     }
 
 

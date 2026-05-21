@@ -1,15 +1,24 @@
 <?php
 
-if(!defined('ABSPATH')) { // Accessed directly.
-    exit;
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
 }
 
+
 if(!function_exists('sima')){
-    function sima(){
+    function sima(): \SimaBase\SimaBase
+    {
         return \SimaBase\SimaBase::getInstance();
     }
 }
 
+if(!function_exists('momemt')){
+    /** @throws \Moment\MomentException */
+    function momemt(string $dateTime = "now", $timezone = null, $immutableMode = false): \Moment\Moment
+    {
+        return new \Moment\Moment($dateTime, $timezone, $immutableMode);
+    }
+}
 
 if(!function_exists('url')){
     function url($path){
@@ -26,7 +35,6 @@ if(!function_exists('formatBytes')){
         return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
     }
 }
-
 
 function is_login_page() {
     return in_array($GLOBALS['pagenow'], ['wp-login.php', 'wp-register.php']);

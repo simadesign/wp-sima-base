@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Admin;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 class AdminController
 {
 

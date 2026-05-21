@@ -1,6 +1,9 @@
 <?php
-
 namespace SimaBase\Admin\Theme\Customizer\Panel\Section;
+
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
 
 use SimaBase\Admin\Theme\Customizer\Panel\Section;
 

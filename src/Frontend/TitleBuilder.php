@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Frontend;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 class TitleBuilder
 {
 

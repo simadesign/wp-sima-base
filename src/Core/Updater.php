@@ -1,5 +1,9 @@
 <?php
-namespace SimaTheme\Core;
+namespace SimaBase\Core;
+
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
 
 use SimaBase\Plugin;
 

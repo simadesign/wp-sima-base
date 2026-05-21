@@ -1,7 +1,7 @@
 {
     "name": "simadesign/sima-base",
     "description": "A WordPress base plugin for SiMa projects, providing utilities for custom theme development and essential security features.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "authors": [
         {
             "name": "Neil",

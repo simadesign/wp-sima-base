@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Admin;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 use SimaBase\Admin\Customizer\Panel;
 use SimaBase\Admin\Customizer\SocialManager;
 use WP_Customize_Manager;

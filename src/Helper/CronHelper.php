@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Helper;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 use SimaBase\Plugin;
 
 class CronHelper

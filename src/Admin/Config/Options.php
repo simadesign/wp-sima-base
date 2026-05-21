@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Admin\Config;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 use SimaBase\Core\Traits\Singleton;
 
 class Options

@@ -1,12 +1,10 @@
 <?php
 namespace SimaBase;
 
-if (!defined('ABSPATH')) {
+if(!defined('ABSPATH')) {
     exit; // Accessed directly
 }
 
-use Moment\Moment;
-use Moment\MomentException;
 use SimaBase\Core\Security;
 use SimaBase\Core\Traits\Singleton;
 use SimaBase\Frontend\Theme;
@@ -18,38 +16,35 @@ class SimaBase {
     /** @var Plugin */
     protected Plugin $plugin;
 
+    /** @var Security */
+    protected Security $security;
+
     /** @var Theme */
     protected Theme $theme;
 
     public string $site_url;
-    public string $plugin_dir_url;
 
     protected function __construct(){
+        $this->plugin = Plugin::getInstance();
+        $this->security = Security::getInstance();
+        $this->theme = Theme::getInstance();
+
         $this->site_url = strtolower(get_site_url());
-        $this->plugin_dir_url = plugin_dir_url(__DIR__);
     }
 
-    public function getPlugin(): Plugin
+    public function plugin(): Plugin
     {
-        return Plugin::getInstance();
+        return $this->plugin;
     }
 
-    public static function getSecurity(): Security
+    public function security(): Security
     {
-        return Security::getInstance();
+        return $this->security;
     }
 
-    public static function getTheme(): Theme
+    public function theme(): Theme
     {
-        return Theme::getInstance();
-    }
-
-
-
-    /** @throws MomentException */
-    public static function Moment(string $dateTime = "now", $timezone = null, $immutableMode = false): Moment
-    {
-        return new Moment($dateTime, $timezone, $immutableMode);
+        return $this->theme;
     }
 
 }

@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Core\Traits;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 trait Singleton {
 
     /** @var self|null */

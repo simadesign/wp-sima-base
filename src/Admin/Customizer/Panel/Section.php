@@ -1,6 +1,10 @@
 <?php
 namespace SimaBase\Admin\Customizer\Panel;
 
+if(!defined('ABSPATH')) {
+    exit; // Accessed directly
+}
+
 use SimaBase\Admin\Customizer\Panel;
 
 class Section
