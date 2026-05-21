@@ -77,7 +77,7 @@ class Updater
             'name'          => $remote['name'] ?? 'SiMa Base',
             'slug'          => $this->plugin->slug,
             'version'       => $remote['version'] ?? '',
-            'author'        => $remote['author'] ?? 'SiMa Design',
+            'author'        => $remote['author'] ?? 'SiMaDesign',
             'homepage'      => $remote['homepage'] ?? '',
             'requires'      => $remote['requires'] ?? '',
             'tested'        => $remote['tested'] ?? '',

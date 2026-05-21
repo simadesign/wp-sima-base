@@ -8,7 +8,7 @@
  * Plugin Name:   SiMa Base
  * Plugin URI:    https://simadesign.de
  * Description:   A WordPress base plugin for SiMa projects, providing utilities for custom theme development and essential security features.
- * Version:       0.1
+ * Version:       0.1.1
  * Author:        SiMaDesign
  * Author URI:    https://simadesign.de
  * Update URI:    https://simadesign.de
