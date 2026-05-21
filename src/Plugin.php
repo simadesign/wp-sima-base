@@ -5,7 +5,6 @@ if(!defined('ABSPATH')) {
     exit; // Accessed directly
 }
 
-use SimaBase\Admin\AdminController;
 use SimaBase\Core\Traits\Singleton;
 use SimaBase\Core\Updater;
 
@@ -14,10 +13,9 @@ class Plugin
 
     use Singleton;
 
+
     const CAPABILITY = 'manage_options';
 
-    /** @var AdminController */
-    protected AdminController $adminController;
 
     /** @var Updater */
     protected Updater $updater;
@@ -33,36 +31,40 @@ class Plugin
         $this->pluginDirUrl = plugin_dir_url(__DIR__);
         $this->basename = plugin_basename($this->pluginFile);
 
-        $this->adminController = new AdminController();
         $this->updater = new Updater($this);
     }
 
-    public function getData(){
+    public function getData(): array
+    {
         if(empty($this->pluginData)){
             $this->pluginData = get_plugin_data($this->pluginFile);
         }
         return $this->pluginData;
     }
 
-    public function getVersion(){
+    public function getVersion(): string
+    {
         return $this->getData()['Version'];
     }
 
 
-    public function onAdminLoad(callable $callback){
+    public function onAdminLoad(callable $callback): void
+    {
         add_action('admin_init', function() use($callback){
             $callback($this);
         });
     }
 
-    public function onLoad(callable $callback){
+    public function onLoad(callable $callback): void
+    {
         add_action('init', function() use($callback){
             $callback($this);
         });
     }
 
 
-    public function getPluginUrl($path){
+    public function getPluginUrl($path): string
+    {
         return (str_starts_with($path, '/'))? $this->pluginDirUrl . substr($path, 1) : "{$this->pluginDirUrl}{$path}";
     }
 

@@ -37,19 +37,20 @@ class Theme {
         $this->registerCoreFeatures();
     }
 
-    protected function registerFilters(){
-
+    protected function registerFilters(): void
+    {
         //
+    }
+
+    protected function registerActions(): void
+    {
+
+        add_action('after_setup_theme', [$this, '_registerMenus']);
 
     }
 
-    protected function registerActions(){
-
-        add_action('after_setup_theme', [$this, 'registerMenus']);
-
-    }
-
-    protected function registerCoreFiles(){
+    protected function registerCoreFiles(): void
+    {
         $this->onLoadFrontend(function() {
 
             wp_enqueue_script('main_script');
@@ -57,7 +58,8 @@ class Theme {
         });
     }
 
-    protected function registerCoreFeatures(){
+    protected function registerCoreFeatures(): void
+    {
 
         add_theme_support('title-tag');
         add_theme_support('gallery');
@@ -67,17 +69,29 @@ class Theme {
 
 
 
-    public function scripts(){
+    public function scripts(): ScriptHelper
+    {
         return $this->scriptHelper;
     }
 
-    public function styles(){
+    public function styles(): StyleHelper
+    {
         return $this->styleHelper;
+    }
+
+    public function customizer(): Customizer
+    {
+        return $this->getCustomizer();
     }
 
     public function getCustomizer(): Customizer
     {
         return $this->customizer;
+    }
+
+    public function social(): Customizer\SocialManager
+    {
+        return $this->getSocial();
     }
 
     public function getSocial(): Customizer\SocialManager
@@ -86,7 +100,8 @@ class Theme {
     }
 
 
-    public function onLoadFrontend(callable $callback){
+    public function onLoadFrontend(callable $callback): void
+    {
         add_action('init', function() use($callback){
             if(!is_admin() && !is_login_page()){
                 $callback($this);
@@ -96,7 +111,7 @@ class Theme {
 
 
 
-    public function menu($slug, $name): self
+    public function menu($slug, $name): static
     {
         if(count($this->menus) === 0){
             add_theme_support('menus');
@@ -107,41 +122,48 @@ class Theme {
         return $this;
     }
 
-    public function registerMenus(){
+    public function _registerMenus(): void
+    {
         register_nav_menus($this->menus);
     }
 
 
 
-    public function useScript($handle, $src, $version = false, $deps = [], $args = []) {
+    public function useScript($handle, $src, $version = false, $deps = [], $args = []): static
+    {
         wp_enqueue_script($handle, $src, $deps, $version, $args);
 
         return $this;
     }
 
-    public function useThemeScript($handle, $themeSrc, $version = false, $deps = [], $args = []) {
+    public function useThemeScript($handle, $themeSrc, $version = false, $deps = [], $args = []): static
+    {
         return $this->useScript($handle, asset($themeSrc), $version, $deps, $args);
     }
 
-    public function useStyle($handle, $src, $version = false, $deps = [], $media = 'all'){
+    public function useStyle($handle, $src, $version = false, $deps = [], $media = 'all'): static
+    {
         wp_enqueue_style($handle, $src, $deps, $version, $media);
 
         return $this;
     }
 
-    public function useThemeStyle($handle, $themeSrc, $version = false, $deps = [], $media = 'all'){
+    public function useThemeStyle($handle, $themeSrc, $version = false, $deps = [], $media = 'all'): static
+    {
         return $this->useStyle($handle, asset($themeSrc), $version, $deps, $media);
     }
 
 
 
-    public function useTitleBuilder(){
+    public function useTitleBuilder(): static
+    {
         add_filter('wp_title', [new TitleBuilder(), 'build'], 10, 2);
 
         return $this;
     }
 
-    public function useCustomExcerptLength($length){
+    public function useCustomExcerptLength($length): static
+    {
         add_filter(
             'excerpt_length',
             function() use($length) {
@@ -152,7 +174,8 @@ class Theme {
 
         return $this;
     }
-    public function useAcfGoogleMaps(string $apiKey){
+    public function useAcfGoogleMaps(string $apiKey): static
+    {
         add_filter('acf/fields/google_map/api', function($api) use($apiKey){
             $api['key'] = $apiKey;
 
@@ -162,7 +185,8 @@ class Theme {
         return $this;
     }
 
-    public function useWoocommerce(){
+    public function useWoocommerce(): void
+    {
         add_theme_support('woocommerce');
         add_filter('woocommerce_show_page_title', '__return_false');
         add_filter('single_product_archive_thumbnail_size', function(){

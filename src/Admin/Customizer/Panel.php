@@ -57,14 +57,14 @@ class Panel
 
 
 
-    public function setPriority(int $priority): self
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 

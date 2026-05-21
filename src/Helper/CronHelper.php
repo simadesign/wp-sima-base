@@ -23,7 +23,8 @@ class CronHelper
 
     }
 
-    public function _cronSchedulesFilter($schedules){
+    public function _cronSchedulesFilter($schedules): mixed
+    {
         foreach($this->intervals as $key => $data){
             $schedules[$key] = [
                 'interval' => $data['interval'],
@@ -34,11 +35,13 @@ class CronHelper
         return $schedules;
     }
 
-    public function addInterval(string $key, string $displayName, int $interval){
+    public function addInterval(string $key, string $displayName, int $interval): void
+    {
         $this->intervals[$key] = compact('displayName', 'interval');
     }
 
-    public function scheduleCron($recurrence, $hook, $args = []){
+    public function scheduleCron($recurrence, $hook, $args = []): void
+    {
         Plugin::getInstance()->onLoad(function() use($recurrence, $hook, $args) {
             if(!wp_next_scheduled($hook)){
                 wp_schedule_event(time(), $recurrence, $hook, $args);

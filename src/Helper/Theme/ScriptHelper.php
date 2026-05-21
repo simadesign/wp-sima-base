@@ -19,16 +19,19 @@ class ScriptHelper
         $this->theme = $theme;
     }
 
-    public function useJquery(){
+    public function useJquery(): void
+    {
         wp_localize_script('jquery', 'ajaxurl', admin_url('admin-ajax.php'));
         wp_enqueue_script('jquery');
     }
 
-    public function useScrollFlow(){
+    public function useScrollFlow(): Theme
+    {
         return $this->theme->useScript('scroll-flow', $this->plugin->getPluginUrl("/includes/js/ScrollFlow.js"));
     }
 
-    public function useCountUp(){
+    public function useCountUp(): Theme
+    {
         return $this->theme->useScript('count-up', $this->plugin->getPluginUrl("/includes/vendor/inorganik/countUp/js/countUp.umd.js"));
     }
 

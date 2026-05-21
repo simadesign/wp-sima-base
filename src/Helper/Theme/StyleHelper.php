@@ -20,15 +20,18 @@ class StyleHelper
         $this->theme = $theme;
     }
 
-    public function useUtils(){
+    public function useUtils(): Theme
+    {
         return $this->theme->useStyle('sima-style', $this->plugin->getPluginUrl("/includes/css/style.css"), $this->plugin->getVersion());
     }
 
-    public function useBootstrapGrid(){
+    public function useBootstrapGrid(): Theme
+    {
         return $this->theme->useStyle('bootstrap-grid', $this->plugin->getPluginUrl("/vendor/twbs/bootstrap/dist/css/bootstrap-grid.min.css"), InstalledVersions::getVersion('twbs/bootstrap'));
     }
 
-    public function useBootstrapUtils(){
+    public function useBootstrapUtils(): Theme
+    {
         return $this->theme->useStyle('bootstrap-utilities', $this->plugin->getPluginUrl("/vendor/twbs/bootstrap/dist/css/bootstrap-utilities.min.css"), InstalledVersions::getVersion('twbs/bootstrap'));
     }
 

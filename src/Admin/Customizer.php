@@ -103,21 +103,4 @@ class Customizer
         $this->buildPanel('simadesign', "SiMa Theme", $callback);
     }
 
-    /*
-    $wp_customize->add_setting('footer_image_top', array(
-        'type'                  =>  'theme_mod',
-        'capability'            =>  'edit_theme_options',
-        'theme_supports'        =>  '',
-        'default'               =>  '',
-        'sanitize_callback'     =>  '',
-        'sanitize_js_callback'  =>  '',
-        'transport'             =>  'refresh',
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_image_top', array(
-        'label'            => 'Footer Logo 1st',
-        'section'          => 'footer',
-        'settings'         => 'footer_image_top'
-    )));
-    */
-
 }

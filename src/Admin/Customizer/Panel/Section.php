@@ -48,33 +48,33 @@ class Section
         ];
     }
 
-    public function setPriority(int $priority): self
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function addSetting(string $id, string $label, array $args = []): self
+    public function addSetting(string $id, string $label, array $args = []): static
     {
         $this->settings[$id] = array_merge($args, compact('id', 'label'));
 
         return $this;
     }
 
-    public function addTextSetting(string $id, string $label, array $args = []): self
+    public function addTextSetting(string $id, string $label, array $args = []): static
     {
         return $this->addSetting($id, $label, array_merge($args, ['type' => 'text']));
     }
 
-    public function addTextareaSetting(string $id, string $label, array $args = []): self
+    public function addTextareaSetting(string $id, string $label, array $args = []): static
     {
         return $this->addSetting($id, $label, array_merge($args, ['type' => 'textarea']));
     }

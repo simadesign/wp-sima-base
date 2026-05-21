@@ -19,13 +19,15 @@ class Security
         $this->registerFilters();
     }
 
-    protected function registerFilters(){
+    protected function registerFilters(): void
+    {
 
         add_filter('rest_endpoints', [$this, '_handleRestEndpoints']);
 
     }
 
-    public function _handleRestEndpoints($endpoints){
+    public function _handleRestEndpoints($endpoints): mixed
+    {
         if($this->_disablePublicUserEndpoint){
             if(isset($endpoints['/wp/v2/users'])){
                 unset($endpoints['/wp/v2/users']);
@@ -38,7 +40,8 @@ class Security
         return $endpoints;
     }
 
-    public function disablePublicUserEndpoint($disable = true){
+    public function disablePublicUserEndpoint($disable = true): void
+    {
         $this->_disablePublicUserEndpoint = $disable;
     }
 

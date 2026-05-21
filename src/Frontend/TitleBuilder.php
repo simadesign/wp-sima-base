@@ -8,7 +8,8 @@ if(!defined('ABSPATH')) {
 class TitleBuilder
 {
 
-    public function build($title, $sep) {
+    public function build($title, $sep): string
+    {
         if(is_feed()) {
             return $title;
         }
